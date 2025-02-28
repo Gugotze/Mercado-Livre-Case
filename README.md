@@ -1,5 +1,7 @@
 # Mercado Livre - Case - Aplicação de Gerenciamento de Pedidos e Centros de Distribuição
 
+
+
 * Tecnologias Utilizadas
   
 Java 17
@@ -11,6 +13,8 @@ H2 Database (banco de dados em memória)
 RestTemplate (para integração com APIs externas)
 
 Maven (gerenciamento de dependências)
+
+
 
 * Funcionalidades
   
@@ -27,6 +31,8 @@ Retorna os detalhes de um pedido, incluindo os itens e os centros de distribuiç
 <> Consultar Centros de Distribuição por Item:
 
 Retorna uma lista de centros de distribuição que podem entregar um item específico.
+
+
 
 * Endpoints da API
 
