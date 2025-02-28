@@ -12,10 +12,8 @@ H2 Database (banco de dados em memória)
 
 RestTemplate (para integração com APIs externas)
 
-Maven (gerenciamento de dependências)
-
-
-
+Maven (gerenciamento de dependências)  
+  
 * Funcionalidades
   
 <> Processar Pedidos:
