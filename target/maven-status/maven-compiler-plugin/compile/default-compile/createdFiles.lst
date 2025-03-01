@@ -1,0 +1,4 @@
+com/ml/distributioncenter/MlCaseApplication.class
+com/ml/distributioncenter/domain/DistributionCenter.class
+com/ml/distributioncenter/domain/Item.class
+com/ml/distributioncenter/domain/Order.class
