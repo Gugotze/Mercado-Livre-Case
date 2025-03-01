@@ -1,5 +1,6 @@
 package com.ml.distributioncenter.infra.service;
 
+import com.ml.distributioncenter.infra.Exception.ItemNotFoundException;
 import com.ml.distributioncenter.infra.domain.response.DistributionCenterResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,8 @@ public class DistributionCenterService {
         } else if (itemId == 2L) {
             return List.of(new DistributionCenterResponse(List.of("DC4", "DC5")));
         } else {
-            return List.of(new DistributionCenterResponse(List.of("DC1")));
+            // Lançando a exceção personalizada caso o itemId não seja encontrado
+            throw new ItemNotFoundException("O item com o ID " + itemId + " não está cadastrado em nosso sistema.");
         }
     }
 }

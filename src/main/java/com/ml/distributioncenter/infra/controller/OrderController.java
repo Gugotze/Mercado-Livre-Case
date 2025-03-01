@@ -8,6 +8,8 @@ import com.ml.distributioncenter.infra.domain.response.OrderResponse;
 import com.ml.distributioncenter.infra.repository.OrderRepository;
 import com.ml.distributioncenter.infra.service.DistributionCenterService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,8 +39,8 @@ public class OrderController {
         return new OrderResponse(customerOrder.getId(), customerOrder.getItems());
     }
 
-    @GetMapping("/distribution-centers/{itemId}")
-    public List<DistributionCenterResponse> getDistributionCentersByItemId(@PathVariable Long itemId) {
+    @GetMapping("/distribution-centers")
+    public List<DistributionCenterResponse> getDistributionCentersByItemId(@RequestParam Long itemId) {
         return distributionCenterService.getDistributionCentersByItemId(itemId);
     }
 
@@ -56,4 +58,5 @@ public class OrderController {
         customerOrder.setItems(items);
         return items;
     }
+
 }
