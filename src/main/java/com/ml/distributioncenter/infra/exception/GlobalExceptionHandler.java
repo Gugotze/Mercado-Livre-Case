@@ -1,4 +1,4 @@
-package com.ml.distributioncenter.infra.Exception;
+package com.ml.distributioncenter.infra.exception;
 
 import com.ml.distributioncenter.infra.domain.response.ErrorResponse;
 import org.springframework.http.HttpStatus;

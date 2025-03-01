@@ -1,7 +1,6 @@
 package com.ml.distributioncenter.infra.domain.response;
 
 import com.ml.distributioncenter.infra.domain.OrderItem;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

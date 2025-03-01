@@ -1,4 +1,4 @@
-package com.ml.distributioncenter.infra.Exception;
+package com.ml.distributioncenter.infra.exception;
 
 public class ItemNotFoundException extends RuntimeException {
 
