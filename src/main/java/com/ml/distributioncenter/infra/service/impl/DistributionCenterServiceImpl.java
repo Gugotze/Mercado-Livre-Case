@@ -12,11 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 public class DistributionCenterServiceImpl implements DistributionCenterService {
 
-    public List<DistributionCenterResponse> getDistributionCentersByItemId(Long itemId) {
+    @Override
+    public DistributionCenterResponse getDistributionCentersByItemId(Long itemId) {
         if (itemId == 1L) {
-            return List.of(new DistributionCenterResponse(List.of("DC1", "DC2", "DC3")));
+            return new DistributionCenterResponse(List.of("CD1", "CD2", "CD3"));
         } else if (itemId == 2L) {
-            return List.of(new DistributionCenterResponse(List.of("DC4", "DC5")));
+            return new DistributionCenterResponse(List.of("CD2", "CD3"));
         } else {
             // Lançando a exceção personalizada caso o itemId não seja encontrado
             throw new ItemNotFoundException("O item com o ID " + itemId + " não está cadastrado em nosso sistema.");

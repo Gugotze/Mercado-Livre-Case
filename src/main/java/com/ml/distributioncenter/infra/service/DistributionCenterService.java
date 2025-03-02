@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface DistributionCenterService {
 
-    List<DistributionCenterResponse> getDistributionCentersByItemId(Long itemId);
+    DistributionCenterResponse getDistributionCentersByItemId(Long itemId);
 
 }

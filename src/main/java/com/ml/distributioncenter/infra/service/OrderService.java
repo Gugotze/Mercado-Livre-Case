@@ -9,5 +9,5 @@ import java.util.List;
 public interface OrderService {
     OrderResponse processOrder(List<OrderItemRequest> orderItems);
     OrderResponse getOrder(Long orderId);
-    List<DistributionCenterResponse> getDistributionCentersByItemId(Long itemId);
+    DistributionCenterResponse getDistributionCentersByItemId(Long itemId);
 }

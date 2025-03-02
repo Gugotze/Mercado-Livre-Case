@@ -39,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
         return new OrderResponse(customerOrder.getId(), customerOrder.getItems());
     }
 
-    public List<DistributionCenterResponse> getDistributionCentersByItemId(Long itemId) {
+    public DistributionCenterResponse getDistributionCentersByItemId(Long itemId) {
         return distributionCenterService.getDistributionCentersByItemId(itemId);
     }
 
@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService {
                     OrderItem orderItem = new OrderItem();
                     orderItem.setItemId(item.getItemId());
                     orderItem.setQuantity(item.getQuantity());
-                    orderItem.setDistributionCenters(distributionCenterService.getDistributionCentersByItemId(item.getItemId()).get(0).getDistribuitionCenters());
+                    orderItem.setDistributionCenters(distributionCenterService.getDistributionCentersByItemId(item.getItemId()).getDistribuitionCenters());
                     orderItem.setCustomerOrder(customerOrder);
                     return orderItem;
                 })

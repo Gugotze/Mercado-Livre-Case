@@ -27,7 +27,7 @@ public class OrderController {
     }
 
     @GetMapping("/distribution-centers")
-    public List<DistributionCenterResponse> getDistributionCentersByItemId(@RequestParam Long itemId) {
+    public DistributionCenterResponse getDistributionCentersByItemId(@RequestParam Long itemId) {
         return orderService.getDistributionCentersByItemId(itemId);
     }
 }
