@@ -1,10 +1,10 @@
+// src/main/java/com/ml/distributioncenter/infra/service/impl/OrderServiceImpl.java
 package com.ml.distributioncenter.infra.service.impl;
 
 import com.ml.distributioncenter.infra.domain.CustomerOrder;
 import com.ml.distributioncenter.infra.domain.OrderItem;
 import com.ml.distributioncenter.infra.domain.request.OrderItemRequest;
-import com.ml.distributioncenter.infra.domain.response.DistributionCenterResponse;
-import com.ml.distributioncenter.infra.domain.response.OrderResponse;
+import com.ml.distributioncenter.infra.domain.response.*;
 import com.ml.distributioncenter.infra.repository.OrderRepository;
 import com.ml.distributioncenter.infra.service.DistributionCenterService;
 import com.ml.distributioncenter.infra.service.OrderService;
@@ -21,7 +21,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final DistributionCenterService distributionCenterService;
 
-    public OrderResponse processOrder(List<OrderItemRequest> orderItems) {
+    public OrderProcessResponse processOrder(List<OrderItemRequest> orderItems) {
         if (orderItems.size() > 100) {
             throw new IllegalArgumentException("O pedido não pode ter mais de 100 itens.");
         }
@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrderService {
         List<OrderItem> items = getOrderItems(orderItems, customerOrder);
         orderRepository.save(customerOrder);
 
-        return new OrderResponse(customerOrder.getId(), items);
+        return new OrderProcessResponse(customerOrder.getId(), items);
     }
 
     public OrderResponse getOrder(Long orderId) {
@@ -48,6 +48,7 @@ public class OrderServiceImpl implements OrderService {
                 .map(item -> {
                     OrderItem orderItem = new OrderItem();
                     orderItem.setItemId(item.getItemId());
+                    orderItem.setName(item.getName());
                     orderItem.setQuantity(item.getQuantity());
                     orderItem.setDistributionCenters(distributionCenterService.getDistributionCentersByItemId(item.getItemId()).getDistribuitionCenters());
                     orderItem.setCustomerOrder(customerOrder);
@@ -58,4 +59,3 @@ public class OrderServiceImpl implements OrderService {
         return items;
     }
 }
-

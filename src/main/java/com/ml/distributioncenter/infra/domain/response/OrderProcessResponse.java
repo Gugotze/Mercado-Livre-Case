@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
-public class OrderResponse {
+public class OrderProcessResponse {
 
     private Long orderId;
-    private List<OrderItemResponse> items;
+    private List<ProcessItemResponse> items;
 
-    public OrderResponse(Long orderId, List<OrderItem> items) {
+    public OrderProcessResponse(Long orderId, List<OrderItem> items) {
         this.orderId = orderId;
         this.items = items.stream()
-                .map(item -> new OrderItemResponse(item.getName(), item.getQuantity(), item.getDistributionCenters()))
-                .toList();
+                .map(item -> new ProcessItemResponse(item.getName(), item.getDistributionCenters()))
+                .collect(Collectors.toList());
     }
 }

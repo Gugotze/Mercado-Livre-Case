@@ -9,11 +9,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderItemResponse {
+public class ProcessItemResponse {
 
     private String name;
-    private int quantity;
     private List<String> distributionCenters;
 
-}
 
+}

@@ -17,6 +17,9 @@ public class OrderItem {
     private Long id;
 
     private Long itemId;
+
+    private String name;
+
     private int quantity;
 
     @ElementCollection
