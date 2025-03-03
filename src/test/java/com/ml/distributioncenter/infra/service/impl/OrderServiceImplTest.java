@@ -55,7 +55,7 @@ class OrderServiceImplTest {
     void testGetOrder() {
         CustomerOrder customerOrder = new CustomerOrder();
         customerOrder.setId(1L);
-        customerOrder.setItems(new ArrayList<>()); // Ensure items list is not null
+        customerOrder.setItems(new ArrayList<>());
         when(orderRepository.findById(1L)).thenReturn(Optional.of(customerOrder));
 
         OrderResponse response = orderService.getOrder(1L);

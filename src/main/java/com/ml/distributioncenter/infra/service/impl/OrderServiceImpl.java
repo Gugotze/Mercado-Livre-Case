@@ -1,4 +1,3 @@
-// src/main/java/com/ml/distributioncenter/infra/service/impl/OrderServiceImpl.java
 package com.ml.distributioncenter.infra.service.impl;
 
 import com.ml.distributioncenter.infra.client.DistributionCenterClient;
@@ -7,15 +6,17 @@ import com.ml.distributioncenter.infra.domain.OrderItem;
 import com.ml.distributioncenter.infra.domain.request.OrderItemRequest;
 import com.ml.distributioncenter.infra.domain.response.OrderProcessResponse;
 import com.ml.distributioncenter.infra.domain.response.OrderResponse;
+import com.ml.distributioncenter.infra.exception.OrderNotFoundException;
 import com.ml.distributioncenter.infra.repository.OrderRepository;
 import com.ml.distributioncenter.infra.service.OrderService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@AllArgsConstructor
+
 @Service
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
@@ -35,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
 
     public OrderResponse getOrder(Long orderId) {
         CustomerOrder customerOrder = orderRepository.findById(orderId)
-                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+                .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
         return new OrderResponse(customerOrder.getId(), customerOrder.getItems());
     }
 
