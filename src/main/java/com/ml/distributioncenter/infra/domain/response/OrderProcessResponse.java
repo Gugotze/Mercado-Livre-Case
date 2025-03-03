@@ -18,6 +18,6 @@ public class OrderProcessResponse {
         this.orderId = orderId;
         this.items = items.stream()
                 .map(item -> new ProcessItemResponse(item.getName(), item.getDistributionCenters()))
-                .collect(Collectors.toList());
+                .toList();
     }
 }

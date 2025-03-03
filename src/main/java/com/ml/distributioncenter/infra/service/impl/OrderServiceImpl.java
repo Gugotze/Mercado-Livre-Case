@@ -1,25 +1,25 @@
 // src/main/java/com/ml/distributioncenter/infra/service/impl/OrderServiceImpl.java
 package com.ml.distributioncenter.infra.service.impl;
 
+import com.ml.distributioncenter.infra.client.DistributionCenterClient;
 import com.ml.distributioncenter.infra.domain.CustomerOrder;
 import com.ml.distributioncenter.infra.domain.OrderItem;
 import com.ml.distributioncenter.infra.domain.request.OrderItemRequest;
-import com.ml.distributioncenter.infra.domain.response.*;
+import com.ml.distributioncenter.infra.domain.response.OrderProcessResponse;
+import com.ml.distributioncenter.infra.domain.response.OrderResponse;
 import com.ml.distributioncenter.infra.repository.OrderRepository;
-import com.ml.distributioncenter.infra.service.DistributionCenterService;
 import com.ml.distributioncenter.infra.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
-    private final DistributionCenterService distributionCenterService;
+    private final DistributionCenterClient distributionCenterClient;
 
     public OrderProcessResponse processOrder(List<OrderItemRequest> orderItems) {
         if (orderItems.size() > 100) {
@@ -39,10 +39,6 @@ public class OrderServiceImpl implements OrderService {
         return new OrderResponse(customerOrder.getId(), customerOrder.getItems());
     }
 
-    public DistributionCenterResponse getDistributionCentersByItemId(Long itemId) {
-        return distributionCenterService.getDistributionCentersByItemId(itemId);
-    }
-
     private List<OrderItem> getOrderItems(List<OrderItemRequest> orderItems, CustomerOrder customerOrder) {
         List<OrderItem> items = orderItems.stream()
                 .map(item -> {
@@ -50,11 +46,11 @@ public class OrderServiceImpl implements OrderService {
                     orderItem.setItemId(item.getItemId());
                     orderItem.setName(item.getName());
                     orderItem.setQuantity(item.getQuantity());
-                    orderItem.setDistributionCenters(distributionCenterService.getDistributionCentersByItemId(item.getItemId()).getDistribuitionCenters());
+                    orderItem.setDistributionCenters(distributionCenterClient.getDistributionCentersByItemId(item.getItemId()).getDistribuitionCenters());
                     orderItem.setCustomerOrder(customerOrder);
                     return orderItem;
                 })
-                .collect(Collectors.toList());
+                .toList();
         customerOrder.setItems(items);
         return items;
     }

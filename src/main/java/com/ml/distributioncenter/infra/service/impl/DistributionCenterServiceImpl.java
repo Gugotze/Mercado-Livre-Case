@@ -19,7 +19,6 @@ public class DistributionCenterServiceImpl implements DistributionCenterService 
         } else if (itemId == 2L) {
             return new DistributionCenterResponse(List.of("CD2", "CD3"));
         } else {
-            // Lançando a exceção personalizada caso o itemId não seja encontrado
             throw new ItemNotFoundException("O item com o ID " + itemId + " não está cadastrado em nosso sistema.");
         }
     }
