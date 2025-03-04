@@ -11,16 +11,6 @@ import org.springframework.web.method.annotation.HandlerMethodValidationExceptio
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ItemNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleItemNotFoundException(ItemNotFoundException ex) {
-        ErrorResponse errorResponse = new ErrorResponse(
-                HttpStatus.NOT_FOUND.value(),
-                ex.getMessage(),
-                "Item não encontrado no sistema. Verifique o ID ou entre em contato com o suporte."
-        );
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
-    }
-
     @ExceptionHandler(OrderNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleOrderNotFoundException(OrderNotFoundException ex) {
         ErrorResponse errorResponse = new ErrorResponse(
