@@ -148,14 +148,3 @@ Response Body:
   ]
 }
 ```
-
-404 NOT FOUND
-
-Response Body:
-```json
-{
-  "statusCode": 404,
-  "message": "O item com o ID 5 não está cadastrado em nosso sistema.",
-  "details": "Item não encontrado no sistema. Verifique o ID ou entre em contato com o suporte."
-}
-```
