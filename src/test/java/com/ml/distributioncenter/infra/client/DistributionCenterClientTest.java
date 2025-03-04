@@ -1,7 +1,7 @@
 package com.ml.distributioncenter.infra.client;
 
-import com.ml.distributioncenter.infra.domain.response.DistributionCenterResponse;
-import com.ml.distributioncenter.infra.service.DistributionCenterService;
+import com.ml.distributioncenter.adapter.response.DistributionCenterResponse;
+import com.ml.distributioncenter.application.service.DistributionCenterService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,7 +11,7 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class DistributionCenterClientTest {
+public class DistributionCenterClientTest {
 
     @Mock
     private DistributionCenterService distributionCenterService;
